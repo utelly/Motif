@@ -137,8 +137,9 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (BOOL)applyClassWithName:(NSString *)name to:(id)applicant error:(NSError **)error {
-    NSParameterAssert(name != nil);
-    NSParameterAssert(applicant != nil);
+	if ( name == nil || applicant == nil ) {
+		return NO;
+	}
     
     MTFThemeClass *class = [self classForName:name];
 

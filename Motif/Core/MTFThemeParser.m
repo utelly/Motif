@@ -413,21 +413,21 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSDictionary<NSString *, MTFThemeConstant *> *)mergeParsedConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)parsedConstants intoExistingConstants:(NSDictionary<NSString *, MTFThemeConstant *> *)existingConstants error:(NSError **)error {
     NSSet<NSString *> *intersectingConstants = [existingConstants mtf_intersectingKeysWithDictionary:parsedConstants];
 
-    if (intersectingConstants.count > 0) {
-        if (error != NULL) {
-            NSString *description = [NSString stringWithFormat:
-                @"Registering new constants with identical names to "
-                    "previously-defined constants will overwrite existing "
-                    "constants with the following names: %@",
-                intersectingConstants];
-
-            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
-                NSLocalizedDescriptionKey : description
-            }];
-        }
-
-        return nil;
-    }
+//    if (intersectingConstants.count > 0) {
+//        if (error != NULL) {
+//            NSString *description = [NSString stringWithFormat:
+//                @"Registering new constants with identical names to "
+//                    "previously-defined constants will overwrite existing "
+//                    "constants with the following names: %@",
+//                intersectingConstants];
+//
+//            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+//                NSLocalizedDescriptionKey : description
+//            }];
+//        }
+//
+//        return nil;
+//    }
 
     NSMutableDictionary<NSString *, MTFThemeConstant *> *mergedConstants = [existingConstants mutableCopy];
     [mergedConstants addEntriesFromDictionary:parsedConstants];
@@ -437,21 +437,21 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSDictionary<NSString *, MTFThemeClass *> *)mergeParsedClasses:(NSDictionary<NSString *, MTFThemeClass *> *)parsedClasses intoExistingClasses:(NSDictionary<NSString *, MTFThemeClass *> *)existingClasses error:(NSError **)error {
     NSSet<NSString *> *intersectingClasses = [existingClasses mtf_intersectingKeysWithDictionary:parsedClasses];
 
-    if (intersectingClasses.count > 0) {
-        if (error != NULL) {
-            NSString *description = [NSString stringWithFormat:
-                @"Registering new classes with identical names to "
-                    "previously-defined classes will overwrite existing classes "
-                    "with the following names: %@",
-                intersectingClasses];
-                
-            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
-                NSLocalizedDescriptionKey : description
-            }];
-        }
-
-        return nil;
-    }
+//    if (intersectingClasses.count > 0) {
+//        if (error != NULL) {
+//            NSString *description = [NSString stringWithFormat:
+//                @"Registering new classes with identical names to "
+//                    "previously-defined classes will overwrite existing classes "
+//                    "with the following names: %@",
+//                intersectingClasses];
+//
+//            *error = [NSError errorWithDomain:MTFErrorDomain code:MTFErrorFailedToParseTheme userInfo:@{
+//                NSLocalizedDescriptionKey : description
+//            }];
+//        }
+//
+//        return nil;
+//    }
 
     NSMutableDictionary<NSString *, MTFThemeClass *> *mergedClasses = [existingClasses mutableCopy];
     [mergedClasses addEntriesFromDictionary:parsedClasses];

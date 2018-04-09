@@ -48,7 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Public
 
 - (BOOL)applyTo:(id)applicant error:(NSError **)error {
-    NSParameterAssert(applicant != nil);
+	if ( applicant == nil ) {
+		return NO;
+	}
 
     // If the theme class has already been applied to the applicant, do no
     // reapply.
